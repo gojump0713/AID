@@ -40,7 +40,7 @@ app.innerHTML = `
     <canvas class="hero__canvas" aria-hidden="true"></canvas>
     <div class="container">
       <span class="eyebrow">${ic('description')} 사업 개요</span>
-      <h1>${data.program}</h1>
+      <h1>${data.program.replace('전환 중점', '전환<br>중점')}</h1>
       <p class="lead">
         AI·Digital 전환 중점 전문대학 지원사업의 핵심 개요와,
         틸론이 제안하는 솔루션 맵을 한눈에 정리했습니다.

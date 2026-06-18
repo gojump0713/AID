@@ -19,9 +19,33 @@ const typeClass = (t) => (t.includes('연합') ? 'union' : 'solo')
 const regionByKey = (key) => data.regions.find((r) => r.region === key)
 
 /* ----------------------------- 정적 셸 ----------------------------- */
-// 출처 → 검색 기반 새 창(실제 기사 URL 미제공으로 검색 결과 페이지로 연결)
-const sourceUrl = (u) =>
-  'https://www.google.com/search?q=' + encodeURIComponent(`${u.name} ${u.source} AID 전문대학`)
+// 출처 → 대학별 지정 기사 URL (대학명 부분일치). 미지정 시 검색 결과로 연결.
+const SOURCE_URLS = {
+  '경민대': 'https://www.e-newsp.com/news/article.html?no=87623',
+  '경복대': 'https://www.dhnews.co.kr/news/view/1065588838086535',
+  '대림대': 'https://www.korea.kr/news/policyNewsView.do?newsId=148964229',
+  '청강문화산업대': 'https://www.peoplenews.kr/bbs/board.php?bo_table=news&wr_id=30301',
+  '연성대': 'https://www.koreadaily.com/article/20260526000031450',
+  '유한대': 'https://www.wooriilbo.com/news/article.html?no=100443',
+  '강원도립대': 'https://biz.heraldcorp.com/article/10738386',
+  '한림성심대': 'https://news.nate.com/view/20260511n25965',
+  '충북보건과학대': 'https://www.inews365.com/news/article.html?no=918790',
+  '대전보건대': 'https://www.koreaeaglenews.com/news/articleView.html?idxno=100030',
+  '연암대': 'https://www.naeponews.co.kr/news/articleView.html?idxno=57259',
+  '동의과학대': 'https://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0300&key=20260513.99099003449',
+  '연암공과대': 'https://www.gnnews.co.kr/news/articleView.html?idxno=636769',
+  '울산과학대': 'https://www.news1.kr/society/education/6160949',
+  '경남정보대': 'https://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0300&key=20260511.99099002580',
+  '순천제일대': 'https://www.jeonmae.co.kr/news/articleView.html?idxno=1255593',
+  '전주비전대': 'https://news.tf.co.kr/read/releasecopy/2321333.htm',
+  '제주한라대': 'http://www.jeollailbo.com/news/articleView.html?idxno=800078',
+}
+const sourceUrl = (u) => {
+  for (const [key, url] of Object.entries(SOURCE_URLS)) {
+    if (u.name.includes(key)) return url
+  }
+  return 'https://www.google.com/search?q=' + encodeURIComponent(`${u.name} ${u.source} AID 전문대학`)
+}
 
 const app = document.querySelector('#app')
 app.innerHTML = `
@@ -30,7 +54,7 @@ app.innerHTML = `
     <canvas class="hero__canvas" aria-hidden="true"></canvas>
     <div class="container">
       <span class="eyebrow">${ic('hub')} TILON · 영업 준비 보고</span>
-      <h1>${data.program}</h1>
+      <h1>${data.program.replace('전환 중점', '전환<br>중점')}</h1>
       <p class="lead">
         권역별 선정대학(사업단)의 비전·추진 방향을 정리하고,
         틸론 솔루션(${data.products.join(' · ')}) 관점의 영업 가설을 한 화면에서 살펴봅니다.
