@@ -1,0 +1,15 @@
+{
+  "name": "aid-2026-report",
+  "version": "0.1.0",
+  "private": true,
+  "description": "2026 AID(AI+Digital) 전환 중점 전문대학 지원사업 — 틸론 영업 준비 보고용 웹페이지",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
