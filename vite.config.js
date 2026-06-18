@@ -18,6 +18,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         regions: resolve(__dirname, 'regions.html'),
+        media: resolve(__dirname, 'media.html'),
       },
     },
   },

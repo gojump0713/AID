@@ -356,3 +356,53 @@ mark { background: var(--royal-100); color: var(--royal-700); font-weight: 700; 
 .prodcard__ic .material-symbols-outlined { font-size: 26px; }
 .prodcard h3 { color: var(--navy-800); font-size: var(--fs-h3); }
 .prodcard p { margin-top: var(--space-2); font-size: var(--fs-sm); color: var(--color-text-muted); line-height: 1.55; }
+
+/* =========================================================================
+   MEDIA (배포 자료) — YouTube embed
+   ========================================================================= */
+.container--narrow { max-width: 920px; }
+.hero--media { padding-block: var(--space-6) var(--space-5); }
+
+.media {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: var(--space-5);
+}
+.media__title {
+  font-size: var(--fs-h2);
+  color: var(--navy-800);
+  line-height: 1.35;
+  margin-bottom: var(--space-4);
+}
+.media__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--navy-900);
+  box-shadow: var(--shadow-sm);
+}
+.media__frame iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.media__meta {
+  margin-top: var(--space-4);
+  display: flex; flex-wrap: wrap; gap: var(--space-3);
+  align-items: center; justify-content: space-between;
+}
+.media__meta p { color: var(--color-text-muted); font-size: var(--fs-sm); max-width: 60ch; }
+.media__link {
+  display: inline-flex; align-items: center; gap: 7px;
+  flex: none;
+  background: var(--royal-600); color: #fff;
+  padding: 9px 16px; border-radius: 999px;
+  font-size: var(--fs-sm); font-weight: 600;
+  transition: all var(--dur) var(--ease);
+}
+.media__link:hover { background: var(--royal-500); transform: translateY(-2px); }
+.media__link .material-symbols-outlined { font-size: 18px; }

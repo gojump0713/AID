@@ -18,6 +18,9 @@ export function navHTML(active = 'intro') {
         <a href="./regions.html" class="${active === 'regions' ? 'is-active' : ''}">
           ${sym('map')} 권역별 선정 현황
         </a>
+        <a href="./media.html" class="${active === 'media' ? 'is-active' : ''}">
+          ${sym('play_circle')} 배포 자료
+        </a>
       </div>
     </div>
   </nav>`
