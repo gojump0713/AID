@@ -7,6 +7,7 @@ import data from './data/universities.json'
 import { renderMap } from './map.js'
 import { navHTML } from './nav.js'
 import { partnersOf } from './partners.js'
+import { initHeroCanvas } from './hero.js'
 
 const ALL = '전체'
 const totalUniv = data.regions.reduce((s, r) => s + r.universities.length, 0)
@@ -26,6 +27,7 @@ const app = document.querySelector('#app')
 app.innerHTML = `
   ${navHTML('regions')}
   <header class="hero">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
     <div class="container">
       <span class="eyebrow">${ic('hub')} TILON · 영업 준비 보고</span>
       <h1>${data.program}</h1>
@@ -213,5 +215,6 @@ tabsEl.querySelectorAll('.tab').forEach((b) =>
 
 /* 초기 상태 */
 select(ALL)
+initHeroCanvas(document.querySelector('.hero'))
 
 console.info('[AID] report ready —', data.regions.length, 'regions /', totalUniv, 'universities')

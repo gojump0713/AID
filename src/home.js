@@ -1,10 +1,11 @@
 /* =========================================================================
-   AID 2026 — AID 사업소개 페이지
+   AID 2026 — 메인(홈) = AID 사업소개
    PDF 한글 추출 이슈로, 개요 정보는 엑셀(권역 정리) 기반으로 구성.
    ========================================================================= */
 
 import data from './data/universities.json'
 import { navHTML } from './nav.js'
+import { initHeroCanvas } from './hero.js'
 
 const ic = (n, c = '') => `<span class="material-symbols-outlined ${c}" aria-hidden="true">${n}</span>`
 const totalUniv = data.regions.reduce((s, r) => s + r.universities.length, 0)
@@ -36,15 +37,18 @@ app.innerHTML = `
   ${navHTML('intro')}
 
   <header class="hero hero--intro">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
     <div class="container">
       <span class="eyebrow">${ic('description')} 사업 개요</span>
-      <h1>AID 사업소개</h1>
+      <h1>${data.program}</h1>
       <p class="lead">
-        2026 AID(AI+Digital) 전환 중점 전문대학 지원사업의 핵심 개요와,
-        틸론이 제안하는 솔루션 맵을 정리했습니다.
+        AI·Digital 전환 중점 전문대학 지원사업의 핵심 개요와,
+        틸론이 제안하는 솔루션 맵을 한눈에 정리했습니다.
       </p>
       <div class="brandline">
-        <a class="navbtn" href="./index.html#regions">${ic('map')} 권역별 선정 현황 보기</a>
+        <a class="navbtn" href="./regions.html">${ic('map')} 권역별 선정 현황 보기</a>
+        <span>${ic('calendar_month')} 사업기간 ${data.period}</span>
+        <span>${ic('school')} ${data.regions.length}개 권역 · ${totalUniv}개 사업단</span>
       </div>
     </div>
   </header>
@@ -77,7 +81,7 @@ app.innerHTML = `
         </div>
         <div class="pills">
           ${data.regions.map((r) => `
-            <span class="pill">${ic('place')} ${r.region} <b>${r.universities.length}</b></span>
+            <a class="pill" href="./regions.html">${ic('place')} ${r.region} <b>${r.universities.length}</b></a>
           `).join('')}
         </div>
       </div>
@@ -108,3 +112,5 @@ app.innerHTML = `
     </div>
   </footer>
 `
+
+initHeroCanvas(document.querySelector('.hero'))
