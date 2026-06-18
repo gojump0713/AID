@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; overflow:hidden; }
+  body{
+    font-family:'Pretendard', -apple-system, 'Segoe UI', sans-serif;
+    width:1200px; height:630px; position:relative;
+    /* 진한 청녹색(deep teal) 배경 */
+    background:
+      radial-gradient(1100px 700px at 82% 18%, rgba(45,212,191,.22), transparent 60%),
+      radial-gradient(900px 600px at 12% 92%, rgba(16,185,129,.18), transparent 60%),
+      linear-gradient(135deg, #042b29 0%, #073f3a 45%, #0a514a 100%);
+    color:#eafaf6;
+  }
+  /* 미세 그리드(회로 느낌) */
+  .grid{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(180,255,240,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(180,255,240,.05) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image: radial-gradient(900px 600px at 78% 30%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(900px 600px at 78% 30%, #000 30%, transparent 80%);
+  }
+  .frame{ position:absolute; inset:26px; border:1px solid rgba(150,240,220,.18); border-radius:24px; }
+  /* AI 네트워크 그래픽 (오른쪽) */
+  .net{ position:absolute; inset:0; }
+  .content{ position:absolute; left:74px; top:0; height:630px; display:flex; flex-direction:column; justify-content:center; width:680px; }
+  .brand{ display:flex; align-items:center; gap:16px; margin-bottom:34px; }
+  .brand .mark{ width:54px; height:54px; }
+  .brand .wm{ font-weight:800; letter-spacing:.14em; font-size:20px; color:#9defd9; }
+  .chip{
+    display:inline-flex; align-items:center; gap:9px; align-self:flex-start;
+    padding:9px 18px; border:1px solid rgba(120,235,205,.4); border-radius:999px;
+    background:rgba(13,77,70,.5); color:#a8f3e0; font-weight:600; font-size:18px; letter-spacing:.02em;
+    margin-bottom:26px;
+  }
+  .chip .dot{ width:10px; height:10px; border-radius:50%; background:#34e3c0; box-shadow:0 0 12px 3px rgba(52,227,192,.7); }
+  h1{
+    font-size:92px; line-height:1.06; font-weight:800; letter-spacing:-.01em;
+    color:#ffffff; text-shadow:0 4px 30px rgba(0,0,0,.35);
+  }
+  h1 .hl{ color:#4ef0cf; }
+  .rule{ width:120px; height:5px; border-radius:3px; margin:34px 0 24px;
+    background:linear-gradient(90deg,#34e3c0,#0aa88f); }
+  .sub{ font-size:25px; font-weight:500; color:#cfeee6; letter-spacing:.01em; }
+  .foot{ position:absolute; left:74px; bottom:54px; font-size:19px; color:#7fc9bb; font-weight:600; letter-spacing:.04em; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+
+  <!-- AI 네트워크 그래픽 -->
+  <svg class="net" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#5ef2d4" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#5ef2d4" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7df3da" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#2bbfa3" stop-opacity=".25"/>
+      </linearGradient>
+    </defs>
+    <!-- 연결선 -->
+    <g stroke="url(#line)" stroke-width="1.6">
+      <line x1="980" y1="120" x2="1080" y2="250"/>
+      <line x1="1080" y1="250" x2="940" y2="330"/>
+      <line x1="940" y1="330" x2="1050" y2="450"/>
+      <line x1="980" y1="120" x2="860" y2="220"/>
+      <line x1="860" y1="220" x2="940" y2="330"/>
+      <line x1="860" y1="220" x2="800" y2="120"/>
+      <line x1="940" y1="330" x2="820" y2="430"/>
+      <line x1="820" y1="430" x2="1050" y2="450"/>
+      <line x1="820" y1="430" x2="900" y2="540"/>
+      <line x1="1050" y1="450" x2="1130" y2="540"/>
+      <line x1="800" y1="120" x2="700" y2="250"/>
+      <line x1="700" y1="250" x2="860" y2="220"/>
+      <line x1="700" y1="250" x2="820" y2="430"/>
+    </g>
+    <!-- 글로우 -->
+    <g>
+      <circle cx="980" cy="120" r="46" fill="url(#glow)"/>
+      <circle cx="940" cy="330" r="64" fill="url(#glow)"/>
+      <circle cx="1050" cy="450" r="50" fill="url(#glow)"/>
+      <circle cx="820" cy="430" r="40" fill="url(#glow)"/>
+    </g>
+    <!-- 노드 -->
+    <g fill="#063f3a" stroke="#5ef2d4" stroke-width="2.4">
+      <circle cx="980" cy="120" r="9"/>
+      <circle cx="1080" cy="250" r="7"/>
+      <circle cx="860" cy="220" r="7"/>
+      <circle cx="940" cy="330" r="13"/>
+      <circle cx="1050" cy="450" r="9"/>
+      <circle cx="820" cy="430" r="8"/>
+      <circle cx="900" cy="540" r="6"/>
+      <circle cx="1130" cy="540" r="6"/>
+      <circle cx="800" cy="120" r="6"/>
+      <circle cx="700" cy="250" r="7"/>
+    </g>
+    <g fill="#9ff7e2">
+      <circle cx="980" cy="120" r="3.2"/>
+      <circle cx="940" cy="330" r="4"/>
+      <circle cx="1050" cy="450" r="3.2"/>
+    </g>
+  </svg>
+
+  <div class="frame"></div>
+
+  <div class="content">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="AID">
+        <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#0aa88f"/><stop offset="1" stop-color="#34e3c0"/>
+        </linearGradient></defs>
+        <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+        <g stroke="#04332f" stroke-width="2.6" stroke-linecap="round" opacity=".9">
+          <line x1="32" y1="32" x2="18" y2="19"/><line x1="32" y1="32" x2="47" y2="19"/>
+          <line x1="32" y1="32" x2="19" y2="46"/><line x1="32" y1="32" x2="46" y2="46"/>
+        </g>
+        <g fill="#04332f"><circle cx="32" cy="32" r="5.6"/><circle cx="18" cy="19" r="3.3"/>
+          <circle cx="47" cy="19" r="3.3"/><circle cx="19" cy="46" r="3.3"/><circle cx="46" cy="46" r="3.3"/></g>
+      </svg>
+      <span class="wm">AID · AI + DIGITAL</span>
+    </div>
+
+    <span class="chip"><span class="dot"></span>2026 전환 중점 전문대학 지원사업</span>
+
+    <h1>AID 전환 사업<br><span class="hl">진행현황</span></h1>
+    <div class="rule"></div>
+    <p class="sub">AI Native Campus 전환 · 권역별 추진 현황 보고</p>
+  </div>
+
+  <div class="foot">TILON · 틸론 영업 준비 보고</div>
+</body>
+</html>
