@@ -26,8 +26,8 @@ const PRODUCTS = [
     desc: '폐쇄망·보안 환경의 Sovereign/Internal AI. GPU Slicing 으로 다중 사용자에게 GPU 자원을 효율 배분.' },
   { icon: 'devices', name: 'Dstation', cls: '',
     desc: '실습용 VDI 환경. 디자인·영상·시뮬레이션 등 GPU 고수요 교과의 표준 실습 데스크톱 제공.' },
-  { icon: 'cloud', name: 'DaaS', cls: '',
-    desc: '3A(Anyone·Anytime·Anywhere) 원격 데스크톱. 멀티캠퍼스·원격학습(런케이션) 공유 인프라.' },
+  { icon: 'rocket_launch', name: 'Tstation', cls: '',
+    desc: '브라우저에서 바로 시작하는 GPU 기반 AI 개발·학습 워크스페이스.' },
   { icon: 'support_agent', name: 'CAS', cls: 'neg',
     desc: '학생지원·교수학습 연계 시스템. 입학~진로 전 주기 데이터 기반 학습자 지원에 결합.' },
 ]

@@ -6,7 +6,6 @@
 import data from './data/universities.json'
 import { renderMap } from './map.js'
 import { navHTML } from './nav.js'
-import { partnersOf } from './partners.js'
 import { initHeroCanvas } from './hero.js'
 
 const ALL = '전체'
@@ -134,17 +133,11 @@ function renderPanel(key) {
   const r = regionByKey(key)
   const solo = r.universities.filter((u) => !u.type.includes('연합')).length
   const union = r.universities.length - solo
-  const partners = partnersOf(key)
   panelEl.innerHTML = `
     <div class="mappanel__card">
       <span class="mappanel__kicker">${ic('place', 'icon--primary')} 선택 권역</span>
       <h3>${r.region}</h3>
       <p class="mappanel__sub">${r.subtitle}</p>
-      ${partners.length ? `
-      <div class="mappanel__partner">
-        ${ic('handshake', 'icon--pos')}
-        <span><b>영업 파트너</b> · ${partners.join(' · ')}</span>
-      </div>` : ''}
       <div class="mappanel__stats">
         <div><b>${r.universities.length}</b><span>사업단</span></div>
         <div><b>${solo}</b><span>단독형</span></div>
@@ -165,7 +158,6 @@ const cardsEl = document.querySelector('#cards')
 
 function cardHTML(u, regionKey) {
   const tc = typeClass(u.type)
-  const partners = partnersOf(regionKey)
   return `
     <article class="ucard ucard--${tc}">
       <div class="ucard__top">
@@ -184,11 +176,6 @@ function cardHTML(u, regionKey) {
           <ul>${u.tilon.map((t) => `<li>${ic('chevron_right', 'icon--primary')}<span>${highlight(t)}</span></li>`).join('')}</ul>
         </div>
       </div>
-      ${partners.length ? `
-      <div class="ucard__partner" title="해당 권역 영업 파트너사">
-        ${ic('handshake', 'icon--pos')}
-        <span><b>영업 파트너</b> · ${partners.join(' · ')}</span>
-      </div>` : ''}
       <a class="ucard__src" href="${sourceUrl(u)}" target="_blank" rel="noopener noreferrer"
          title="출처 자료를 새 창에서 열기">
         ${ic('open_in_new')} 출처 · ${u.source}
